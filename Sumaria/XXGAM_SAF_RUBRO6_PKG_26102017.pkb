@@ -66,7 +66,7 @@ AS
                   ,pso_errcod OUT VARCHAR2
                   ,psi_periodo in varchar2)
    IS 
-/**** -Primer cursor muestra INVERSI覰, DPRN Y MF de XXGAM_SAF_SETUP- ****/   
+/**** -Primer cursor muestra INVERSI脫N, DPRN Y MF de XXGAM_SAF_SETUP- ****/   
    cursor get_agrupado_info
    is 
         select   DISTINCT AGRUPADO grupo 
@@ -91,7 +91,7 @@ AS
                
    descr_info_rec   get_descr_info%ROWTYPE;
    
-/**** Tercer cursor que muestra la informaci髇 de los acumulados  YTD PTD*****/
+/**** Tercer cursor que muestra la informaci贸n de los acumulados  YTD PTD*****/
 /** Este cursosr toma como parametro la cuenta, subcuenta y el periodo **/
    cursor get_saldo_info (ls_cuenta varchar2, ls_subcuenta varchar2, periodo varchar2)
    is
@@ -227,7 +227,7 @@ ORDER BY SEGMENT1, SEGMENT2, SEGMENT3, SEGMENT4, SEGMENT5, SEGMENT6, SEGMENT7, S
     saldo_info_rec    get_saldo_info%ROWTYPE;
    
    ---Declaracion de variables------
-   ls_agrupado varchar2(32767); --INVERSI覰, MF, DPRN
+   ls_agrupado varchar2(32767); --INVERSI脫N, MF, DPRN
    ls_cuenta varchar2(32767); --cuenta
    ls_subcuenta varchar2(32767); -- subcuenta
    ln_subtotal_inicial number; --calcula el subtotal de inv, dpn y mf al inicio del periodo
@@ -237,7 +237,7 @@ ORDER BY SEGMENT1, SEGMENT2, SEGMENT3, SEGMENT4, SEGMENT5, SEGMENT6, SEGMENT7, S
    
    --ls_periodo varchar2(32767);
    ls_periodo_anterior varchar2(32767);
-   ln_subtotal_ptd number;  ----varable para sumar los ptd de INVERSI覰, MF y DPRN
+   ln_subtotal_ptd number;  ----varable para sumar los ptd de INVERSI脫N, MF y DPRN
    ln_total_ptd number; --acumulado total de la sumas de los ln_subtotal_ptd
    ln_debito number; ---variable para imprimir las adiciones
    ln_credito number;   ---variable para imprimir las disminuciones
@@ -253,17 +253,17 @@ ORDER BY SEGMENT1, SEGMENT2, SEGMENT3, SEGMENT4, SEGMENT5, SEGMENT6, SEGMENT7, S
    
    lt_subtotal_inversion_info_rec        XXGAM_SAF_OP_MEN_PKG.t_subtotal_agrupado_rec;---variable record para subtotales de inversion
    lt_subtotal_mf_info_rec               XXGAM_SAF_OP_MEN_PKG.t_subtotal_agrupado_rec;---variable record para subtotales de MF
-   lt_subtotal_dpn_info_rec               XXGAM_SAF_OP_MEN_PKG.t_subtotal_agrupado_rec;---variable record para subtotales de depreciaci髇
+   lt_subtotal_dpn_info_rec               XXGAM_SAF_OP_MEN_PKG.t_subtotal_agrupado_rec;---variable record para subtotales de depreciaci贸n
    
    lt_subtotal_vnl_info_rec        XXGAM_SAF_OP_MEN_PKG.t_subtotal_vnl_rec;          ---variable record para total vnl
                                       
-   lt_inversion_tbl                XXGAM_SAF_OP_MEN_PKG.t_inversion_tbl;            ---variables tipo tabla para inversi髇
+   lt_inversion_tbl                XXGAM_SAF_OP_MEN_PKG.t_inversion_tbl;            ---variables tipo tabla para inversi贸n
    lt_moneda_funcional_tbl         XXGAM_SAF_OP_MEN_PKG.t_moneda_funcional_tbl;     ---variables tipo tabla para MF
-   lt_depreciacion_tbl             XXGAM_SAF_OP_MEN_PKG.t_depreciacion_tbl;         ---variables tipo tabla para depreciaci髇
+   lt_depreciacion_tbl             XXGAM_SAF_OP_MEN_PKG.t_depreciacion_tbl;         ---variables tipo tabla para depreciaci贸n
    
-   ltt_inversion_set_rec            XXGAM_SAF_OP_MEN_PKG.t_inversion_set_rec;        ---variable tipo set inversion para inversi髇
+   ltt_inversion_set_rec            XXGAM_SAF_OP_MEN_PKG.t_inversion_set_rec;        ---variable tipo set inversion para inversi贸n
    ltt_moneda_funcional_set_rec     XXGAM_SAF_OP_MEN_PKG.t_moneda_funcional_set_rec; ---variable tipo set moneda para MF
-   ltt_depreciacion_set_rec         XXGAM_SAF_OP_MEN_PKG.t_depreciacion_set_rec;     ---variable tipo set depreciacion para depreciaci髇     
+   ltt_depreciacion_set_rec         XXGAM_SAF_OP_MEN_PKG.t_depreciacion_set_rec;     ---variable tipo set depreciacion para depreciaci贸n     
    
    ltt_by_rubro_rec                  XXGAM_SAF_OP_MEN_PKG.t_by_rubro_rec;     ---variable tipo rubro
               
@@ -554,7 +554,7 @@ ORDER BY SEGMENT1, SEGMENT2, SEGMENT3, SEGMENT4, SEGMENT5, SEGMENT6, SEGMENT7, S
                            ,psi_divisa          in  varchar2
                            ,pro_tt_by_rubro_rec out XXGAM_SAF_OP_MEN_PKG.t_by_rubro_rec
                            ) is 
-    /**** -Primer cursor muestra INVERSI覰, DPRN Y MF de XXGAM_SAF_SETUP- ****/   
+    /**** -Primer cursor muestra INVERSI脫N, DPRN Y MF de XXGAM_SAF_SETUP- ****/   
    cursor get_agrupado_info
    is 
         select   DISTINCT AGRUPADO grupo 
@@ -579,7 +579,7 @@ ORDER BY SEGMENT1, SEGMENT2, SEGMENT3, SEGMENT4, SEGMENT5, SEGMENT6, SEGMENT7, S
                
    descr_info_rec   get_descr_info%ROWTYPE;
    
-/**** Tercer cursor que muestra la informaci髇 de los acumulados  YTD PTD*****/
+/**** Tercer cursor que muestra la informaci贸n de los acumulados  YTD PTD*****/
 /** Este cursosr toma como parametro la cuenta, subcuenta y el periodo **/
    cursor get_saldo_info (ls_cuenta            varchar2
                         , ls_subcuenta         varchar2
@@ -797,17 +797,17 @@ ORDER BY SEGMENT1, SEGMENT2, SEGMENT3, SEGMENT4, SEGMENT5, SEGMENT6, SEGMENT7, S
    
    lt_subtotal_inversion_info_rec       XXGAM_SAF_OP_MEN_PKG.t_subtotal_agrupado_rec;---variable record para subtotales de inversion
    lt_subtotal_mf_info_rec              XXGAM_SAF_OP_MEN_PKG.t_subtotal_agrupado_rec;---variable record para subtotales de MF
-   lt_subtotal_dpn_info_rec             XXGAM_SAF_OP_MEN_PKG.t_subtotal_agrupado_rec;---variable record para subtotales de depreciaci髇
+   lt_subtotal_dpn_info_rec             XXGAM_SAF_OP_MEN_PKG.t_subtotal_agrupado_rec;---variable record para subtotales de depreciaci贸n
    
    lt_subtotal_vnl_info_rec             XXGAM_SAF_OP_MEN_PKG.t_subtotal_vnl_rec;          ---variable record para total vnl
                                       
-   lt_inversion_tbl                     XXGAM_SAF_OP_MEN_PKG.t_inversion_tbl;            ---variables tipo tabla para inversi髇
+   lt_inversion_tbl                     XXGAM_SAF_OP_MEN_PKG.t_inversion_tbl;            ---variables tipo tabla para inversi贸n
    lt_moneda_funcional_tbl              XXGAM_SAF_OP_MEN_PKG.t_moneda_funcional_tbl;     ---variables tipo tabla para MF
-   lt_depreciacion_tbl                  XXGAM_SAF_OP_MEN_PKG.t_depreciacion_tbl;         ---variables tipo tabla para depreciaci髇
+   lt_depreciacion_tbl                  XXGAM_SAF_OP_MEN_PKG.t_depreciacion_tbl;         ---variables tipo tabla para depreciaci贸n
    
-   ltt_inversion_set_rec                XXGAM_SAF_OP_MEN_PKG.t_inversion_set_rec;        ---variable tipo set inversion para inversi髇
+   ltt_inversion_set_rec                XXGAM_SAF_OP_MEN_PKG.t_inversion_set_rec;        ---variable tipo set inversion para inversi贸n
    ltt_moneda_funcional_set_rec         XXGAM_SAF_OP_MEN_PKG.t_moneda_funcional_set_rec; ---variable tipo set moneda para MF
-   ltt_depreciacion_set_rec             XXGAM_SAF_OP_MEN_PKG.t_depreciacion_set_rec;     ---variable tipo set depreciacion para depreciaci髇     
+   ltt_depreciacion_set_rec             XXGAM_SAF_OP_MEN_PKG.t_depreciacion_set_rec;     ---variable tipo set depreciacion para depreciaci贸n     
    
    ltt_by_rubro_rec                     XXGAM_SAF_OP_MEN_PKG.t_by_rubro_rec;     ---variable tipo rubro
       
