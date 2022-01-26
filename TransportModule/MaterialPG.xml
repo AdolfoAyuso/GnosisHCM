@@ -1,0 +1,333 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_3_GENERIC_160317" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="xxgam.oracle.apps.xbol.tm.freight.server.RequestAM" controllerClass="xxgam.oracle.apps.xbol.tm.freight.webui.MaterialCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:advancedTable id="MaterialT" detailViewAttr="DetailFlag" viewName="MaterialVO1" childViewAttrName="IdFreight">
+               <ui:contents>
+                  <oa:column id="C1">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader1" prompt="Id Flete"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="FleteId" viewAttr="IdFreight" dataType="NUMBER" prompt="" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="C2" columnDataFormat="numberFormat">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader2" prompt="Id Material"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="MaterialNum" dataType="NUMBER" viewAttr="MaterialNum" prompt="" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="C3">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader3" prompt="Tipo de Material"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="TipoMaterialId" dataType="NUMBER" viewAttr="IdMaterialType" prompt="" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="C4">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader4"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="TipoMaterial" dataType="VARCHAR2" viewAttr="MaterialType" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="C5">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader8" prompt="Tipo Carga"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="CargaId" dataType="NUMBER" viewAttr="IdLoadType" prompt="" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="C6">
+                     <ui:columnHeader/>
+                     <ui:contents>
+                        <oa:messageTextInput id="Carga" dataType="VARCHAR2" viewAttr="LoadType" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="C7">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader14" prompt="Shipment"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="Shipment" dataType="VARCHAR2" viewAttr="Shipment" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="C8">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader152" prompt="Peso Total"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="PesoTotal" dataType="NUMBER" viewAttr="TotalWeight" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="C9">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader151" prompt="Vol Total"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:messageTextInput id="VolTotal" dataType="NUMBER" viewAttr="TotalVol" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                     </ui:contents>
+                  </oa:column>
+                  <oa:column id="C10">
+                     <ui:columnHeader>
+                        <oa:sortableHeader id="sortableHeader1511" prompt="Vol Total"/>
+                     </ui:columnHeader>
+                     <ui:contents>
+                        <oa:button id="Edit" text="Editar" prompt="Editar" disabled="${oa.MaterialVO1.IsEditEnabled}">
+                           <ui:primaryClientAction>
+                              <ui:firePartialAction event="editMPG" id="firePartialAction4">
+                                 <ui:parameters>
+                                    <ui:parameter key="pIdMaterialEdit" value="${oa.MaterialVO1.IdMaterial}"/>
+                                 </ui:parameters>
+                              </ui:firePartialAction>
+                           </ui:primaryClientAction>
+                        </oa:button>
+                     </ui:contents>
+                  </oa:column>
+               </ui:contents>
+               <ui:detail>
+                  <oa:header id="Header" text="">
+                     <ui:contents>
+                        <oa:tableLayout id="DetalleRN" hAlign="left">
+                           <ui:contents>
+                              <oa:rowLayout id="R0">
+                                 <ui:contents>
+                                    <oa:cellFormat id="R0C1" columnSpan="3" hAlign="start">
+                                       <ui:contents>
+                                          <oa:header id="Detalles" text="Detalles"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="R0C2" columnSpan="3" hAlign="start">
+                                       <ui:contents>
+                                          <oa:header id="Pesos" text="Pesos"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="R0C3" columnSpan="3" hAlign="start">
+                                       <ui:contents>
+                                          <oa:header id="Dimensiones" text="Dimensiones"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="R1">
+                                 <ui:contents>
+                                    <oa:cellFormat id="D1C1" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="FechaMaterial" dataType="DATE" viewAttr="MaterialDate" tipType="dateFormat" prompt="Fecha Material:" viewName="MaterialVO1" styleClass="OraPromptText" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D1C2"/>
+                                    <oa:cellFormat id="D1C3"/>
+                                    <oa:cellFormat id="D1C4" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="IdPCarga" prompt="Presentación Carga:" dataType="NUMBER" viewName="MaterialVO1" viewAttr="IdLoadPresentation" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D1C5" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="CargaP" prompt="" dataType="VARCHAR2" viewName="MaterialVO1" viewAttr="LoadPresentation" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D1C6"/>
+                                    <oa:cellFormat id="D1C7" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="Largo" dataType="NUMBER" viewName="MaterialVO1" viewAttr="Lenght" prompt="Largo:" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D1C8" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="ULargo" viewName="MaterialVO1" viewAttr="WeightUnits" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="R2">
+                                 <ui:contents>
+                                    <oa:cellFormat id="D2C1" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="HoraMaterial" dataType="VARCHAR2" viewAttr="MaterialTime" prompt="Hora Material:" viewName="MaterialVO1" styleClass="OraPromptText" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D2C2"/>
+                                    <oa:cellFormat id="D2C3"/>
+                                    <oa:cellFormat id="D2C4" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="Peso" prompt="Peso:" dataType="NUMBER" viewName="MaterialVO1" viewAttr="Weight" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D2C5" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="UPeso" prompt="" dataType="VARCHAR2" viewName="MaterialVO1" viewAttr="WeightUnits" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D2C6"/>
+                                    <oa:cellFormat id="D2C7" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="Ancho" dataType="NUMBER" viewName="MaterialVO1" viewAttr="Width" prompt="Ancho:" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D2C8" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="UAncho" viewName="MaterialVO1" viewAttr="WeightUnits" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="R3">
+                                 <ui:contents>
+                                    <oa:cellFormat id="D3C1" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="Reparto" dataType="NUMBER" viewAttr="Distribution" viewName="MaterialVO1" prompt="Reparto:" styleClass="OraPromptText" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D3C2"/>
+                                    <oa:cellFormat id="D3C3"/>
+                                    <oa:cellFormat id="D3C4" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="Cantidad" prompt="Cantidad:" dataType="NUMBER" viewName="MaterialVO1" viewAttr="UnitsNumber" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D3C5" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="TUnidad" prompt="" dataType="VARCHAR2" viewName="MaterialVO1" viewAttr="UnitsType" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D3C6"/>
+                                    <oa:cellFormat id="D3C7" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="Alto" dataType="NUMBER" viewName="MaterialVO1" viewAttr="Height" prompt="Alto:" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D3C8" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="UAlto" viewName="MaterialVO1" viewAttr="HeightUnits" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="R4">
+                                 <ui:contents>
+                                    <oa:cellFormat id="D4C1" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="DgrId" dataType="NUMBER" viewAttr="IdDgr" prompt="DGR:" viewName="MaterialVO1" styleClass="OraPromptText" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D4C2" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="Dgr" dataType="VARCHAR2" viewAttr="Dgr" viewName="MaterialVO1" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D4C3"/>
+                                    <oa:cellFormat id="D4C4" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="TPeso" prompt="Peso Total:" dataType="NUMBER" viewName="MaterialVO1" viewAttr="TotalWeight" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D4C5" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="UTPeso" prompt="" dataType="VARCHAR2" viewName="MaterialVO1" viewAttr="TotalWeightUnits" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D4C6"/>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="R5">
+                                 <ui:contents>
+                                    <oa:cellFormat id="D5C1" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="DocumentoId" dataType="NUMBER" viewAttr="IdDocument" prompt="Documento:" viewName="MaterialVO1" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D5C2" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="Documento" dataType="VARCHAR2" viewAttr="DocumentDescription" viewName="MaterialVO1" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D5C3"/>
+                                    <oa:cellFormat id="D5C4"/>
+                                    <oa:cellFormat id="D5C5"/>
+                                    <oa:cellFormat id="D5C6"/>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                              <oa:rowLayout id="R6">
+                                 <ui:contents>
+                                    <oa:cellFormat id="D6C1" hAlign="end">
+                                       <ui:contents>
+                                          <oa:messageTextInput id="Numero" dataType="VARCHAR2" viewAttr="NReference" tipType="dateFormat" prompt="Número:" viewName="MaterialVO1" styleClass="OraPromptText" readOnly="${oa.MaterialVO1.IsRecordEnabled}"/>
+                                       </ui:contents>
+                                    </oa:cellFormat>
+                                    <oa:cellFormat id="D6C2"/>
+                                    <oa:cellFormat id="D6C3"/>
+                                    <oa:cellFormat id="D6C4"/>
+                                    <oa:cellFormat id="D6C5"/>
+                                    <oa:cellFormat id="D6C6"/>
+                                 </ui:contents>
+                              </oa:rowLayout>
+                           </ui:contents>
+                        </oa:tableLayout>
+                     </ui:contents>
+                  </oa:header>
+               </ui:detail>
+            </oa:advancedTable>
+            <oa:tableLayout id="Footer" hAlign="left">
+               <ui:contents>
+                  <oa:rowLayout id="FR1" hAlign="left">
+                     <ui:contents>
+                        <oa:cellFormat id="F1C1" hAlign="left">
+                           <ui:contents>
+                              <oa:submitButton id="NuevoMaterial" text="Nuevo Material" prompt="Nuevo Material"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="F1C2">
+                           <ui:contents>
+                              <oa:spacer id="Spacer" width="10"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="F1C3" hAlign="right" columnSpan="7">
+                           <ui:contents>
+                              <oa:messageStyledText id="TotalWeight" prompt="Peso Total:" styleClass="OraFieldText"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="F1C4" hAlign="right">
+                           <ui:contents>
+                              <oa:messageStyledText id="TotalVolume" prompt="Volumen Total:" styleClass="OraFieldText"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="F1C5">
+                           <ui:contents>
+                              <oa:spacer id="Spacer2" width="10"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="F1C6" hAlign="left">
+                           <ui:contents>
+                              <oa:submitButton id="Guardar" text="Guardar" prompt="Guardar"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="F1C7">
+                           <ui:contents>
+                              <oa:spacer id="Spacer3" width="10"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="F1C8" hAlign="left">
+                           <ui:contents>
+                              <oa:submitButton id="Return" text="Regresar" prompt="Regresar"/>
+                           </ui:contents>
+                        </oa:cellFormat>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:tableLayout>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>

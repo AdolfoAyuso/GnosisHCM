@@ -1,0 +1,443 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_3_GENERIC_160317" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="xxgam.oracle.apps.xbol.tm.freight.server.RequestAM" controllerClass="xxgam.oracle.apps.xbol.tm.freight.webui.FreightCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="FreightHeader" text="Flete">
+               <ui:contents>
+                  <oa:advancedTable id="FreightTable" viewName="FreightVO1" detailViewAttr="DetailFlag" childViewAttrName="IdFreight" width="70%" viewLinkName="IdFreight">
+                     <ui:contents>
+                        <oa:column id="IdFreightCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="IdFreightH" prompt="Id Flete"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="IdFreight" viewAttr="IdFreight" dataType="NUMBER" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="FreightCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="FreightH" prompt="Folio"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="Freight" viewAttr="IdFreightChar" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="IdProviderCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="IdProviderH" prompt="Id Proveedor"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="IdProvider" viewAttr="IdProvider" dataType="NUMBER" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="ProviderCol">
+                           <ui:columnHeader>
+                              <oa:sortableHeader id="ProviderH" prompt="Proveedor"/>
+                           </ui:columnHeader>
+                           <ui:contents>
+                              <oa:messageTextInput id="Provider" viewAttr="Provider" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="FreightMaterialCol">
+                           <ui:contents>
+                              <oa:button id="FreightMaterial" text="Materiales" prompt="Materiales">
+                                 <ui:primaryClientAction>
+                                    <ui:fireAction id="fireAction1" event="FreightMaterial">
+                                       <ui:parameters>
+                                          <ui:parameter key="pIdFreight" value="${oa.FreightVO1.IdFreight}"/>
+                                          <ui:parameter key="pIdRequest" value="${oa.FreightVO1.IdRequest}"/>
+                                          <ui:parameter key="pIdStretch" value="${oa.FreightVO1.IdStretch}"/>
+                                          <ui:parameter key="pIdFolio" value="${oa.FreightVO1.IdFolio}"/>
+                                       </ui:parameters>
+                                    </ui:fireAction>
+                                 </ui:primaryClientAction>
+                              </oa:button>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="FreightCostCol">
+                           <ui:contents>
+                              <oa:button id="FreightCost" text="Tarifa" prompt="Tarifa"/>
+                           </ui:contents>
+                        </oa:column>
+                        <oa:column id="EditCol">
+                           <ui:contents>
+                              <oa:button id="Edit" text="Editar" prompt="Editar" disabled="${oa.FreightVO1.IsEditEnabled}">
+                                 <ui:primaryClientAction>
+                                    <ui:firePartialAction event="editFPG" id="firePartialAction4">
+                                       <ui:parameters>
+                                          <ui:parameter key="pIdFreightEdit" value="${oa.FreightVO1.IdFreight}"/>
+                                       </ui:parameters>
+                                    </ui:firePartialAction>
+                                 </ui:primaryClientAction>
+                              </oa:button>
+                           </ui:contents>
+                        </oa:column>
+                     </ui:contents>
+                     <ui:detail>
+                        <oa:header id="FreightDetailH" text="Detalles" viewLinkName="IdFreight">
+                           <ui:contents>
+                              <oa:tableLayout id="FreightDetail" hAlign="center">
+                                 <ui:contents>
+                                    <oa:rowLayout id="FR0">
+                                       <ui:contents>
+                                          <oa:cellFormat id="FR0H" columnSpan="8" hAlign="left">
+                                             <ui:contents>
+                                                <oa:header id="FR0Header" text="Información"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="FR1">
+                                       <ui:contents>
+                                          <oa:cellFormat id="IdOriginCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdOrigin" viewName="FreightVO1" viewAttr="IdOrigin" prompt="Origen:" dataType="NUMBER" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="OriginCell" hAlign="start">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Origin" viewName="FreightVO1" viewAttr="Origin" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="FRS1">
+                                             <ui:contents>
+                                                <oa:separator id="item516"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="IdStatusCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdStatus" viewName="FreightVO1" viewAttr="IdStatus" prompt="Estatus:" dataType="NUMBER" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="StatusCell" hAlign="start">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Status" viewName="FreightVO1" viewAttr="Status" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="FR2">
+                                       <ui:contents>
+                                          <oa:cellFormat id="FR2S1" columnSpan="8" hAlign="left">
+                                             <ui:contents>
+                                                <oa:separator id="item517"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="FR3">
+                                       <ui:contents>
+                                          <oa:cellFormat id="IdDestinationCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdDestination" viewName="FreightVO1" viewAttr="IdDestination" prompt="Destino:" dataType="NUMBER" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="DestinationCell" hAlign="start">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Destination" viewName="FreightVO1" viewAttr="Destination" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="FR3S1">
+                                             <ui:contents>
+                                                <oa:separator id="item5161"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="PriorityCell" columnSpan="2" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Priority" viewName="FreightVO1" viewAttr="PriorityCode" prompt="Prioridad:" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="DR0">
+                                       <ui:contents>
+                                          <oa:cellFormat id="R0H" columnSpan="8" hAlign="left">
+                                             <ui:contents>
+                                                <oa:header id="R0Header" text="Detalles Adicionales"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="DR1">
+                                       <ui:contents>
+                                          <oa:cellFormat id="IdClassificationCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdClassification" prompt="Clasificación:" viewName="FreightVO1" viewAttr="IdClassification" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="ClassificationCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Classification" viewName="FreightVO1" viewAttr="Classification" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R1S1">
+                                             <ui:contents>
+                                                <oa:separator id="item1"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="ETDCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ETD" dataType="DATE" viewName="FreightVO1" viewAttr="Etd" tipType="dateFormat" prompt="Fecha ETD:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R1S2">
+                                             <ui:contents>
+                                                <oa:separator id="item2"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="ETDHourCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ETDHour" dataType="VARCHAR2" viewName="FreightVO1" viewAttr="EtdHour" tipType="none" prompt="Hora ETD:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R1S3">
+                                             <ui:contents>
+                                                <oa:separator id="item6"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="JobCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Job" dataType="NUMBER" viewName="FreightVO1" viewAttr="FreightJob" tipType="none" prompt="Job:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="DR2">
+                                       <ui:contents>
+                                          <oa:cellFormat id="IdZoneCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdZone" viewName="FreightVO1" viewAttr="IdZone" prompt="Zona:" dataType="NUMBER" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="ZoneCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Zone" viewName="FreightVO1" viewAttr="ZoneDesc" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R2S1">
+                                             <ui:contents>
+                                                <oa:separator id="item3"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="ETACell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ETA" dataType="DATE" viewName="FreightVO1" viewAttr="Eta" tipType="dateFormat" prompt="Fecha ETA:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R2S2">
+                                             <ui:contents>
+                                                <oa:separator id="item4"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="ETAHourCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ETAHour" dataType="VARCHAR2" viewName="FreightVO1" viewAttr="EtaHour" tipType="none" prompt="Hora ETA:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R2S3">
+                                             <ui:contents>
+                                                <oa:separator id="item52"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="AwbBolCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="AwbBol" dataType="VARCHAR2" viewName="FreightVO1" viewAttr="AwbBol" tipType="none" prompt="AWB/BOL:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="DR3">
+                                       <ui:contents>
+                                          <oa:cellFormat id="DistributionCodeCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="DistributionCode" viewName="FreightVO1" viewAttr="DistributionCode" prompt="Distribución:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="DistributionCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Distribution" viewName="FreightVO1" viewAttr="Distribution" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R3S1">
+                                             <ui:contents>
+                                                <oa:separator id="item5"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="ArrivalDateCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ArrivalDate" dataType="DATE" viewName="FreightVO1" viewAttr="ArrivalDate" tipType="dateFormat" prompt="Fecha de Arribo:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R3S2">
+                                             <ui:contents>
+                                                <oa:separator id="item51"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="ArrivalHourCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ArrivalHour" dataType="VARCHAR2" viewName="FreightVO1" viewAttr="ArrivalTime" tipType="none" prompt="Hora de Arribo:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R3S3">
+                                             <ui:contents>
+                                                <oa:separator id="item511"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="FlightCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Flight" dataType="VARCHAR2" viewName="FreightVO1" viewAttr="Flight" tipType="none" prompt="Vuelo:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="DR4">
+                                       <ui:contents>
+                                          <oa:cellFormat id="IdMediaCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdMedia" viewName="FreightVO1" viewAttr="IdMedia" prompt="Medio:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="MediaCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Media" viewName="FreightVO1" viewAttr="Media" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R4S1"/>
+                                          <oa:cellFormat id="R4S2"/>
+                                          <oa:cellFormat id="R4S3"/>
+                                          <oa:cellFormat id="R4S4"/>
+                                          <oa:cellFormat id="R4S5"/>
+                                          <oa:cellFormat id="PedimentCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Pediment" dataType="VARCHAR2" viewName="FreightVO1" viewAttr="Pediment" tipType="none" prompt="Pedimento:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="DR5">
+                                       <ui:contents>
+                                          <oa:cellFormat id="ModeCodeCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="ModeCode" viewName="FreightVO1" viewAttr="IdMode" prompt="Modo:" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="ModeCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="Mode" viewName="FreightVO1" viewAttr="ModeDesc" styleClass="OraPromptText" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R5S1">
+                                             <ui:contents>
+                                                <oa:separator id="item512"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R5S2" hAlign="end">
+                                             <ui:contents>
+                                                <oa:separator id="item514"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R5S3">
+                                             <ui:contents>
+                                                <oa:separator id="item513"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="R5S4" hAlign="end">
+                                             <ui:contents>
+                                                <oa:separator id="item515"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="PR0">
+                                       <ui:contents>
+                                          <oa:cellFormat id="P0H" columnSpan="8" hAlign="left">
+                                             <ui:contents>
+                                                <oa:header id="P0Header" text="Documentos"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="PR1">
+                                       <ui:contents>
+                                          <oa:cellFormat id="UpdateCell">
+                                             <ui:contents>
+                                                <oa:messageComponentLayout id="UploadRN">
+                                                   <ui:contents>
+                                                      <oa:messageTextInput id="Doc1" prompt="Documento 1:" viewName="FreightVO1" viewAttr="Document1" dataType="NUMBER" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                                      <oa:messageLayout id="Down1" prompt="">
+                                                         <ui:contents>
+                                                            <oa:submitButton id="Download1" text="Descargar" prompt="Descargar">
+                                                               <ui:primaryClientAction>
+                                                                  <ui:firePartialAction event="download" id="firePartialAction1">
+                                                                     <ui:parameters>
+                                                                        <ui:parameter key="Document" value="Doc1"/>
+                                                                     </ui:parameters>
+                                                                  </ui:firePartialAction>
+                                                               </ui:primaryClientAction>
+                                                            </oa:submitButton>
+                                                         </ui:contents>
+                                                      </oa:messageLayout>
+                                                      <oa:messageTextInput id="Doc2" dataType="NUMBER" prompt="Documento 2:" viewName="FreightVO1" viewAttr="Document2" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                                      <oa:messageLayout id="Down2" prompt="">
+                                                         <ui:contents>
+                                                            <oa:submitButton id="Download2" text="Descargar" prompt="Descargar">
+                                                               <ui:primaryClientAction>
+                                                                  <ui:firePartialAction event="download" id="firePartialAction2">
+                                                                     <ui:parameters>
+                                                                        <ui:parameter key="Document" value="Doc2"/>
+                                                                     </ui:parameters>
+                                                                  </ui:firePartialAction>
+                                                               </ui:primaryClientAction>
+                                                            </oa:submitButton>
+                                                         </ui:contents>
+                                                      </oa:messageLayout>
+                                                      <oa:messageTextInput id="Doc3" viewName="FreightVO1" viewAttr="Document4" prompt="Documento 3:" dataType="NUMBER" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                                      <oa:messageLayout id="Down3" prompt="">
+                                                         <ui:contents>
+                                                            <oa:submitButton id="Download3" text="Descargar" prompt="Descargar">
+                                                               <ui:primaryClientAction>
+                                                                  <ui:firePartialAction event="download" id="firePartialAction3">
+                                                                     <ui:parameters>
+                                                                        <ui:parameter key="Document" value="Doc3"/>
+                                                                     </ui:parameters>
+                                                                  </ui:firePartialAction>
+                                                               </ui:primaryClientAction>
+                                                            </oa:submitButton>
+                                                         </ui:contents>
+                                                      </oa:messageLayout>
+                                                      <oa:messageTextInput id="Doc4" viewName="FreightVO1" viewAttr="Document4" prompt="Documento 3:" dataType="NUMBER" readOnly="${oa.FreightVO1.IsRecordEnabled}"/>
+                                                      <oa:messageFileUpload id="MessageFileUpload" prompt="Carga de Archivo:" rendered="${oa.FreightVO1.IsEditEnabled}"/>
+                                                      <oa:messageLayout id="ButtonLayout" rendered="${oa.FreightVO1.IsEditEnabled}">
+                                                         <ui:contents>
+                                                            <oa:submitButton id="Submit" use="/oracle/apps/fnd/attributesets/Buttons/Go"/>
+                                                         </ui:contents>
+                                                      </oa:messageLayout>
+                                                   </ui:contents>
+                                                </oa:messageComponentLayout>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                 </ui:contents>
+                              </oa:tableLayout>
+                           </ui:contents>
+                        </oa:header>
+                     </ui:detail>
+                  </oa:advancedTable>
+                  <oa:pageButtonBar id="BotonesRN">
+                     <ui:contents>
+                        <oa:submitButton id="Save" text="Guardar" prompt="Guardar"/>
+                        <oa:submitButton id="Cancel" text="Cancelar" prompt="Cancelar"/>
+                        <oa:submitButton id="NewStretch" text="Nuevo Tramo" prompt="Nuevo Tramo" rendered="${oa.RequestVO1.FreightEnabled}"/>
+                     </ui:contents>
+                  </oa:pageButtonBar>
+               </ui:contents>
+            </oa:header>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>
