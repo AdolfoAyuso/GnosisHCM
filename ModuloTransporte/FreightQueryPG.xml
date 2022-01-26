@@ -1,0 +1,210 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<page xmlns:jrad="http://xmlns.oracle.com/jrad" xmlns:oa="http://xmlns.oracle.com/oa" xmlns:ui="http://xmlns.oracle.com/uix/ui" version="10.1.3_3_GENERIC_160317" xml:lang="en-US" xmlns:user="http://xmlns.oracle.com/jrad/user" xmlns="http://xmlns.oracle.com/jrad" file-version="$Header$">
+   <content>
+      <oa:pageLayout id="PageLayoutRN" amDefName="xxgam.oracle.apps.xbol.tm.freight.server.RequestAM" controllerClass="xxgam.oracle.apps.xbol.tm.freight.webui.FreightQueryCO">
+         <ui:corporateBranding>
+            <oa:image id="corporateBrandingImage" source="/OA_MEDIA/FNDSSCORP.gif"/>
+         </ui:corporateBranding>
+         <ui:contents>
+            <oa:header id="Request" text="Búsqueda de Solicitudes">
+               <ui:contents>
+                  <oa:rowLayout id="PR1">
+                     <ui:contents>
+                        <oa:cellFormat id="PR1C1" vAlign="top">
+                           <ui:contents>
+                              <oa:tableLayout id="RequestQT" hAlign="left">
+                                 <ui:contents>
+                                    <oa:rowLayout id="R1">
+                                       <ui:contents>
+                                          <oa:cellFormat id="IdRequestCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdRequestQ" prompt="Id Sol:" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="R2">
+                                       <ui:contents>
+                                          <oa:cellFormat id="IdStatusCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdStatusQ" prompt="Estatus:" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="StatusCell" hAlign="start">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="StatusQ"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="R3">
+                                       <ui:contents>
+                                          <oa:cellFormat id="IdPriorityCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdPriorityQ" prompt="Prioridad:" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="PriorityCell" hAlign="start">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PriorityQ"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="R4">
+                                       <ui:contents>
+                                          <oa:cellFormat id="R4C1"/>
+                                          <oa:cellFormat id="R4C2"/>
+                                          <oa:cellFormat id="R4C3">
+                                             <ui:contents>
+                                                <oa:separator id="item1"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="RequestBtnCell">
+                                             <ui:contents>
+                                                <oa:submitButton id="RequestBtn" text="Buscar" prompt="Buscar"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                 </ui:contents>
+                              </oa:tableLayout>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="PR1C2">
+                           <ui:contents>
+                              <oa:table id="RequestVO1">
+                                 <ui:contents>
+                                    <oa:messageTextInput id="IdRequest" dataType="NUMBER" prompt="Id Sol" viewName="RequestVO1" viewAttr="IdRequest"/>
+                                    <oa:messageTextInput id="Status" dataType="VARCHAR2" prompt="Estatus" viewName="RequestVO1" viewAttr="Status" maximumLength="200"/>
+                                    <oa:messageTextInput id="PriorityCode" dataType="VARCHAR2" prompt="Prioridad" viewName="RequestVO1" viewAttr="PriorityCode" maximumLength="200"/>
+                                    <oa:messageTextInput id="OperatingUnit" dataType="VARCHAR2" prompt="U. Op." viewName="RequestVO1" viewAttr="OperatingUnit" maximumLength="200"/>
+                                    <oa:messageTextInput id="Origin" dataType="VARCHAR2" prompt="Origen" viewName="RequestVO1" viewAttr="Origin" maximumLength="200"/>
+                                    <oa:messageTextInput id="Destination" dataType="VARCHAR2" prompt="Destino" viewName="RequestVO1" viewAttr="Destination" maximumLength="200"/>
+                                 </ui:contents>
+                              </oa:table>
+                           </ui:contents>
+                        </oa:cellFormat>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:header>
+            <oa:header id="Freight">
+               <ui:contents>
+                  <oa:rowLayout id="PR2">
+                     <ui:contents>
+                        <oa:cellFormat id="PR2C1">
+                           <ui:contents>
+                              <oa:table id="FreightVO1" width="80%">
+                                 <ui:contents>
+                                    <oa:messageTextInput id="IdFreightChar" dataType="VARCHAR2" prompt="Folio" viewName="FreightVO1" viewAttr="IdFreightChar" maximumLength="200"/>
+                                    <oa:messageTextInput id="IdRequestF" dataType="NUMBER" prompt="Id Sol" viewName="FreightVO1" viewAttr="IdRequest"/>
+                                    <oa:messageTextInput id="OriginF" dataType="VARCHAR2" prompt="Origen" viewName="FreightVO1" viewAttr="Origin" maximumLength="200"/>
+                                    <oa:messageTextInput id="DestinationF" dataType="VARCHAR2" prompt="Destino" viewName="FreightVO1" viewAttr="Destination" maximumLength="200"/>
+                                    <oa:messageTextInput id="StatusF" dataType="VARCHAR2" prompt="StatusF" viewName="FreightVO1" viewAttr="Status" maximumLength="200"/>
+                                    <oa:messageTextInput id="FreightJob" dataType="VARCHAR2" prompt="Job" viewName="FreightVO1" viewAttr="FreightJob" maximumLength="200"/>
+                                    <oa:messageTextInput id="PriorityCodeF" dataType="VARCHAR2" prompt="Prioridad" viewName="FreightVO1" viewAttr="PriorityCode" maximumLength="100"/>
+                                    <oa:messageTextInput id="Provider" dataType="VARCHAR2" prompt="Proveedor" viewName="FreightVO1" viewAttr="Provider" maximumLength="200"/>
+                                    <oa:messageTextInput id="Etd" dataType="DATE" prompt="ETD" viewName="FreightVO1" viewAttr="Etd"/>
+                                    <oa:messageTextInput id="Eta" dataType="DATE" prompt="ETA" viewName="FreightVO1" viewAttr="Eta"/>
+                                    <oa:messageTextInput id="AwbBol" dataType="VARCHAR2" prompt="AWB/BOL" viewName="FreightVO1" viewAttr="AwbBol" maximumLength="200"/>
+                                 </ui:contents>
+                              </oa:table>
+                           </ui:contents>
+                        </oa:cellFormat>
+                        <oa:cellFormat id="PR2C2" vAlign="top">
+                           <ui:contents>
+                              <oa:tableLayout id="FreightQT" hAlign="start" width="20%">
+                                 <ui:contents>
+                                    <oa:rowLayout id="F1">
+                                       <ui:contents>
+                                          <oa:cellFormat id="IdFreightCharCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdFreightCharQ" prompt="Folio:" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="F2">
+                                       <ui:contents>
+                                          <oa:cellFormat id="IdStatusFCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="IdStatusFQ" prompt="Estatus:" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="StatusFCell" hAlign="start">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="StatusFQ"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="F3">
+                                       <ui:contents>
+                                          <oa:cellFormat id="PriorityCodeFCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PriorityCodeFQ" prompt="Prioridad:" dataType="NUMBER"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="PriorityFCell" hAlign="start">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="PriorityFQ"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="F4" rendered="false">
+                                       <ui:contents>
+                                          <oa:cellFormat id="CreationDateQCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="CreationDateQ" prompt="Folio:" dataType="DATE"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="F5" rendered="false">
+                                       <ui:contents>
+                                          <oa:cellFormat id="NumberCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="NumberQ" prompt="Folio:" dataType="VARCHAR2"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="F6">
+                                       <ui:contents>
+                                          <oa:cellFormat id="JobCell" hAlign="end">
+                                             <ui:contents>
+                                                <oa:messageTextInput id="JobQ" prompt="Job:" dataType="VARCHAR2"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                    <oa:rowLayout id="F7">
+                                       <ui:contents>
+                                          <oa:cellFormat id="F7C1"/>
+                                          <oa:cellFormat id="F7C2">
+                                             <ui:contents>
+                                                <oa:separator id="item11"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                          <oa:cellFormat id="F7C3"/>
+                                          <oa:cellFormat id="FreightBtnCell">
+                                             <ui:contents>
+                                                <oa:submitButton id="FreightBtn" text="Buscar" prompt="Buscar"/>
+                                             </ui:contents>
+                                          </oa:cellFormat>
+                                       </ui:contents>
+                                    </oa:rowLayout>
+                                 </ui:contents>
+                              </oa:tableLayout>
+                           </ui:contents>
+                        </oa:cellFormat>
+                     </ui:contents>
+                  </oa:rowLayout>
+               </ui:contents>
+            </oa:header>
+         </ui:contents>
+      </oa:pageLayout>
+   </content>
+</page>
